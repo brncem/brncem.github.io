@@ -113,5 +113,5 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!loaderShown && loaderWrapper && loaderBar) { loaderBar.addEventListener('animationend', () => { loaderWrapper.classList.add('loaded'); sessionStorage.setItem('loaderShownThisSession', 'true'); setTimeout(() => { if (loaderWrapper.parentNode) { loaderWrapper.parentNode.removeChild(loaderWrapper); } }, 700); }, { once: true }); } else if (loaderWrapper) { loaderWrapper.style.transition = 'none'; loaderWrapper.style.opacity = '0'; loaderWrapper.style.display = 'none'; setTimeout(() => { if(loaderWrapper.parentNode) { loaderWrapper.parentNode.removeChild(loaderWrapper); } }, 50); }
   
     }
-  
+
   ); // End DOMContentLoaded
