@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Upload - Self://Archive</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="loader-wrapper">
+    <div class="loader-content"> <div class="loader-logo">Self://Archive</div> <div class="loader-bar-container"> <div class="loader-bar"></div> </div> </div>
+  </div>
+  <video autoplay loop muted playsinline id="background-video"> <source src="background-video.webm" type="video/webm"> <source src="background-video.mp4" type="video/mp4"> </video>
+  <header>
+    <a href="index.html" class="logo">Self://Archive</a>
+     <nav>
+      <ul>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="submit.html">Submit Info</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1 id="admin-upload-heading">Admin Story Upload</h1>
+    <form id="admin-story-form">
+      <label for="author">Name (or leave anonymous):</label>
+      <input type="text" id="author" name="author" placeholder="Anonymous" />
+      <label for="content">Your Story:</label>
+      <textarea id="content" name="content" rows="6" required></textarea>
+      <label for="memory-date">Memory Date (approximate):</label>
+      <input type="date" id="memory-date" name="memory-date" />
+      <label for="image">Upload an Image (required):</label>
+      <input type="file" id="image" name="image" accept="image/*" required />
+      <button type="submit">Upload Story</button>
+    </form>
+    <div id="admin-confirmation" style="display:none;">Story uploaded successfully! (Check gallery after refresh)</div>
+  </main>
+   <footer>
+    <div class="bottom-left-tagline">Reflect on connection.</div>
+    <div class="copyright">&copy; 2025 Self://Archive &nbsp;&bull;&nbsp; Made by <a href="https://www.instagram.com/brncem_?igsh=dnhlNWZibTg5ajdw&utm_source=qr" target="_blank" rel="noopener noreferrer">Cem Pipun</a></div>
+  </footer>
+  <script src="script.js"></script>
+  <div class="custom-cursor"></div>
+</body>
+</html>
