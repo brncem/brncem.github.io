@@ -112,18 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const loaderShown = sessionStorage.getItem('loaderShownThisSession');
     if (!loaderShown && loaderWrapper && loaderBar) { loaderBar.addEventListener('animationend', () => { loaderWrapper.classList.add('loaded'); sessionStorage.setItem('loaderShownThisSession', 'true'); setTimeout(() => { if (loaderWrapper.parentNode) { loaderWrapper.parentNode.removeChild(loaderWrapper); } }, 700); }, { once: true }); } else if (loaderWrapper) { loaderWrapper.style.transition = 'none'; loaderWrapper.style.opacity = '0'; loaderWrapper.style.display = 'none'; setTimeout(() => { if(loaderWrapper.parentNode) { loaderWrapper.parentNode.removeChild(loaderWrapper); } }, 50); }
   
-  
-    // --- Cursor Trail Logic ---
-    if (window.matchMedia('(pointer: fine)').matches) {
-        const trailElements = document.querySelectorAll('.cursor-trail'); const trailCount = trailElements.length; const trailPositions = Array(trailCount).fill({ x: -50, y: -50 }); let mouseX = -50; let mouseY = -50; let animationFrameId = null;
-        if (trailCount > 0) {
-            console.log(`Initializing cursor trail with ${trailCount} elements.`);
-            window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; if(trailElements[0]) { trailElements[0].style.opacity = '1'; trailElements[0].style.transform = `translate(${mouseX}px, ${mouseY}px)`; trailPositions[0] = { x: mouseX, y: mouseY }; } });
-            function animateTrail() { for (let i = trailCount - 1; i > 0; i--) { trailPositions[i] = trailPositions[i-1]; } trailElements.forEach((dot, index) => { if (index === 0) return; const { x, y } = trailPositions[index]; if (x !== undefined && y !== undefined) { dot.style.transform = `translate(${x}px, ${y}px)`; const opacity = 1 - (index / trailCount) * 0.5; dot.style.opacity = opacity > 0 ? opacity.toFixed(2) : '0'; } else { dot.style.opacity = '0'; } }); animationFrameId = requestAnimationFrame(animateTrail); }
-            animateTrail();
-            document.addEventListener('mouseleave', () => { trailElements.forEach(dot => dot.style.opacity = '0'); });
-            document.addEventListener('mouseenter', () => {});
-        } else { console.warn("Cursor trail elements not found."); }
     }
   
   }); // End DOMContentLoaded
